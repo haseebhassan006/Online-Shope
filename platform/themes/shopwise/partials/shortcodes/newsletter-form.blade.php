@@ -1,5 +1,5 @@
 <!-- START SECTION SUBSCRIBE NEWSLETTER -->
-<div class="section bg_default small_pt small_pb">
+{{-- <div class="section bg_default small_pt small_pb">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6">
@@ -31,5 +31,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- START SECTION SUBSCRIBE NEWSLETTER -->
