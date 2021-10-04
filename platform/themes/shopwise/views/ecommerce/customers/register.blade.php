@@ -1,4 +1,4 @@
-@php Theme::set('pageName', __('Sign up')) @endphp
+@php Theme::set('pageName', __('Sign Up')) @endphp
 
 <!-- START LOGIN SECTION -->
 <div class="login_register_wrap section">
@@ -8,7 +8,7 @@
                 <div class="login_wrap">
                     <div class="padding_eight_all bg-white">
                         <div class="heading_s1">
-                            <h3>{{ __('Login') }}</h3>
+                            <h3>{{ __('Signup') }}</h3>
                         </div>
                         <form method="POST" action="{{ route('customer.register.post') }}">
                             @csrf

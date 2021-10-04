@@ -12177,7 +12177,7 @@ Simple Line Icons Demo
     width: 33.333%;
   }
 }
-/***
+/*** 
 Glyphicons Demo
 ***/
 .glyphicons-demo ul {
@@ -12319,7 +12319,7 @@ Custom buttons based on bootstrap SASS
 }
 
 /***
-Custom color buttons
+Custom color buttons 
 ***/
 .btn.white:not(.btn-outline) {
   color: #666666;
@@ -16178,7 +16178,7 @@ Forms
 }
 
 /***
-Custom color buttons
+Custom color buttons 
 ***/
 .form-control.white {
   border-color: #ffffff;
@@ -22276,7 +22276,7 @@ Custom tabs
   }
 }
 /***
-Custom color buttons
+Custom color buttons 
 ***/
 .bg-white {
   background: #ffffff !important;
@@ -26994,7 +26994,6 @@ Page Header
   box-shadow: none;
   min-height: 50px;
   filter: none;
-
   background-image: none;
   /* Fixed header */
   /* Header logo */

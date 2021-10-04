@@ -1,11 +1,11 @@
 import Vue from 'vue';
-import VerifyLicenseComponent from './components/VerifyLicenseComponent';
+// import VerifyLicenseComponent from './components/VerifyLicenseComponent';
 
-Vue.component('verify-license-component', VerifyLicenseComponent);
+// Vue.component('verify-license-component', VerifyLicenseComponent);
 
-new Vue({
-    el: '#dashboard-alerts',
-});
+// new Vue({
+//     el: '#dashboard-alerts',
+// });
 
 class BDashboard {
     static loadWidget(el, url, data, callback) {
