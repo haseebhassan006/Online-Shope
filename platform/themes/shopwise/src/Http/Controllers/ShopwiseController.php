@@ -443,7 +443,7 @@ class ShopwiseController extends PublicController
           ->WhereHas('productAttributes', function ($query) use ($attributes) {
               $query->whereIn('attribute_id',$attributes);
           })
-          ->where('brand_id',$brand)
+          ->orwhere('brand_id',$brand)
           ->orderBy('id')
           ->get();
 
