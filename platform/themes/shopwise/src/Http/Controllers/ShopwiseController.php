@@ -2,24 +2,28 @@
 
 namespace Theme\Shopwise\Http\Controllers;
 
-use Botble\Base\Enums\BaseStatusEnum;
-use Botble\Base\Http\Responses\BaseHttpResponse;
-use Botble\Blog\Repositories\Interfaces\PostInterface;
-use Botble\Ecommerce\Repositories\Interfaces\FlashSaleInterface;
-use Botble\Ecommerce\Repositories\Interfaces\ProductVariationInterface;
-use Botble\Ecommerce\Repositories\Interfaces\ReviewInterface;
-use Botble\Testimonial\Repositories\Interfaces\TestimonialInterface;
-use Botble\Theme\Http\Controllers\PublicController;
-use Cart;
 use DB;
+use Cart;
+use Theme;
 use EcommerceHelper;
 use Illuminate\Http\Request;
-use Theme;
-use Theme\Shopwise\Http\Resources\BrandResource;
+use Botble\Ecommerce\Models\Brand;
+use Botble\Ecommerce\Models\Product;
+use Botble\Base\Enums\BaseStatusEnum;
+use Botble\Ecommerce\Models\ProductAttribute;
 use Theme\Shopwise\Http\Resources\PostResource;
-use Theme\Shopwise\Http\Resources\ProductCategoryResource;
+use Botble\Base\Http\Responses\BaseHttpResponse;
+use Botble\Ecommerce\Models\ProductAttributeSet;
+use Theme\Shopwise\Http\Resources\BrandResource;
 use Theme\Shopwise\Http\Resources\ReviewResource;
+use Botble\Theme\Http\Controllers\PublicController;
+use Botble\Blog\Repositories\Interfaces\PostInterface;
 use Theme\Shopwise\Http\Resources\TestimonialResource;
+use Theme\Shopwise\Http\Resources\ProductCategoryResource;
+use Botble\Ecommerce\Repositories\Interfaces\ReviewInterface;
+use Botble\Ecommerce\Repositories\Interfaces\FlashSaleInterface;
+use Botble\Testimonial\Repositories\Interfaces\TestimonialInterface;
+use Botble\Ecommerce\Repositories\Interfaces\ProductVariationInterface;
 
 class ShopwiseController extends PublicController
 {
@@ -418,6 +422,91 @@ class ShopwiseController extends PublicController
         ]);
 
         return $response->setData(ReviewResource::collection($reviews))->toApiResponse();
+    }
+
+    public function ajaxFindBlade(Request $request, BaseHttpResponse $response){
+
+
+
+          $brand = $request->brand;
+          $attributes = array();
+          $attributes['model'] = $request->model;
+          $attributes['bladesizeinche'] = $request->bladesizeinche;
+          $attributes['bladesizefrac'] = $request->bladesizefrac;
+          $attributes['bladelengthwidth'] = $request->bladelengthwidth;
+          $attributes['bladelengthick'] = $request->bladelengthick;
+          $attributes['cross'] = $request->cross;
+          $attributes['material'] = $request->material;
+          $attributes['dimension'] = $request->dimension;
+
+          $products = Product::with('productAttributes')->with('brand')
+          ->WhereHas('productAttributes', function ($query) use ($attributes) {
+              $query->whereIn('attribute_id',$attributes);
+          })
+          ->where('brand_id',$brand)
+          ->orderBy('id')
+          ->get();
+
+          $view = [
+              'products' => $products,
+               'n' =>"botble",
+              'name' => 'bladeresult',
+          ];
+
+
+
+
+$theme = Theme::uses('shopwise')->layout('default');
+return $theme->scope('bladeresult', $view)->render();
+
+
+
+
+
+
+    }
+    public function ajaxGetFinder(BaseHttpResponse $response){
+
+
+        $brands = Brand::all();
+        $attribute_model_id = ProductAttributeSet::where('title','Model')->pluck('id')->first();
+        $attribute_bladelengthinches_id = ProductAttributeSet::where('title','Blade Length(inches)')->pluck('id')->first();
+        $attribute_bladelengthfrac_id = ProductAttributeSet::where('title','Blade Length(fraction)')->pluck('id')->first();
+        $attribute_crosssection_id = ProductAttributeSet::where('title','CROSS SECTION')->pluck('id')->first();
+        $attribute_bladesize_width_id = ProductAttributeSet::where('title','Blade Size(width)')->pluck('id')->first();
+        $attribute_blade_size_thick_id = ProductAttributeSet::where('title','Blade Size(thickness)')->pluck('id')->first();
+        $attribute_material_id = ProductAttributeSet::where('title','Material')->pluck('id')->first();
+        $attribute_materialwidth_id = ProductAttributeSet::where('title','Material Width')->pluck('id')->first();
+
+        $models = ProductAttribute::where('attribute_set_id',$attribute_model_id)->get();
+        $bladelengthinches = ProductAttribute::where('attribute_set_id',$attribute_bladelengthinches_id )->get();
+        $bladelengthfractions = ProductAttribute::where('attribute_set_id',$attribute_bladelengthfrac_id)->get();
+        $crossSections = ProductAttribute::where('attribute_set_id',$attribute_crosssection_id)->get();
+        $bladesizewidth = ProductAttribute::where('attribute_set_id',$attribute_bladesize_width_id)->get();
+        $bladesizethicks = ProductAttribute::where('attribute_set_id',$attribute_blade_size_thick_id)->get();
+        $materials = ProductAttribute::where('attribute_set_id',$attribute_material_id)->get();
+        $materialwidths = ProductAttribute::where('attribute_set_id',$attribute_materialwidth_id)->get();
+
+
+        $theme = Theme::uses('shopwise')->layout('default');
+
+        $view = [
+            'name' => 'finder',
+            'brands' => $brands,
+            'models' => $models,
+            'bladelengthinches' => $bladelengthinches,
+            'bladelengthfractions' =>$bladelengthfractions,
+            'crossSections' => $crossSections,
+            'bladesizewidths' => $bladesizewidth,
+            'bladesizethicks' => $bladesizethicks,
+            'materials' => $materials,
+            'materialwidths' => $materialwidths
+        ];
+
+
+        // home.index will look up the path 'platform/themes/your-theme/views/home/index.blade.php'
+        return $theme->scope('finder', $view)->render();
+
     }
 
     /**

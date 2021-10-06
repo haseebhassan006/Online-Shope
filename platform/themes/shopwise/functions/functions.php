@@ -8,6 +8,12 @@ register_page_template([
     'blog-sidebar' => __('Blog Sidebar'),
 ]);
 
+register_page_template([
+    'finder'     => __('Finderpage'),
+    'blade-finder' => __('Blade Finder'),
+]);
+
+
 register_sidebar([
     'id'          => 'footer_sidebar',
     'name'        => __('Footer sidebar'),

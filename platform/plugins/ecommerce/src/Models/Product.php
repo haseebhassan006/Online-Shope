@@ -278,6 +278,7 @@ class Product extends BaseModel
     public function variationAttributeSwatchesForProductList()
     {
         return $this
+        
             ->hasMany(ProductVariation::class, 'configurable_product_id')
             ->join('ec_product_variation_items', 'ec_product_variation_items.variation_id', '=',
                 'ec_product_variations.id')
