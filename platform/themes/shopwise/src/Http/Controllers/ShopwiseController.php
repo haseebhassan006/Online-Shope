@@ -439,20 +439,28 @@ class ShopwiseController extends PublicController
           $attributes['material'] = $request->material;
           $attributes['dimension'] = $request->dimension;
 
-          $products = Product::with('productAttributes')->with('brand')
-          ->WhereHas('productAttributes', function ($query) use ($attributes) {
+          $products = "";
+          if(!empty($request->all())){
+            $products = Product::with('productAttributes')->with('brand')
+            ->WhereHas('productAttributes', function ($query) use ($attributes) {
 
-              $query->where('attribute_id', $attributes['bladesizeinche'])
-                ->orwhere('attribute_id', $attributes['bladesizefrac'])
-                ->orwhere('attribute_id', $attributes['bladelengthwidth'])
-                ->orwhere('attribute_id',$attributes['bladelengthick'])
-                ->orwhere('attribute_id', $attributes['cross'])
-                ->orwhere('attribute_id',$attributes['material'])
-                ->orwhere('attribute_id',$attributes['dimension']);
-          })
-          ->orwhere('brand_id',$brand)
-          ->orderBy('id')
-          ->get();
+                $query->where('attribute_id', $attributes['bladesizeinche'])
+                  ->orwhere('attribute_id', $attributes['bladesizefrac'])
+                  ->orwhere('attribute_id', $attributes['bladelengthwidth'])
+                  ->orwhere('attribute_id',$attributes['bladelengthick'])
+                  ->orwhere('attribute_id', $attributes['cross'])
+                  ->orwhere('attribute_id',$attributes['material'])
+                  ->orwhere('attribute_id',$attributes['dimension']);
+            })
+            ->orwhere('brand_id',$brand)
+            ->orderBy('id')
+            ->get();
+
+          }else{
+            $products = Product::with('productAttributes')->with('brand')->get();
+
+          }
+
 
 
           $view = [
