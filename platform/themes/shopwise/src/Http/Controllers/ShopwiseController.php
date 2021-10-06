@@ -441,11 +441,19 @@ class ShopwiseController extends PublicController
 
           $products = Product::with('productAttributes')->with('brand')
           ->WhereHas('productAttributes', function ($query) use ($attributes) {
-              $query->whereIn('attribute_id',$attributes);
+
+              $query->where('attribute_id', $attributes['bladesizeinche'])
+                ->orwhere('attribute_id', $attributes['bladesizefrac'])
+                ->orwhere('attribute_id', $attributes['bladelengthwidth'])
+                ->orwhere('attribute_id',$attributes['bladelengthick'])
+                ->orwhere('attribute_id', $attributes['cross'])
+                ->orwhere('attribute_id',$attributes['material'])
+                ->orwhere('attribute_id',$attributes['dimension']);
           })
           ->orwhere('brand_id',$brand)
           ->orderBy('id')
           ->get();
+
 
           $view = [
               'products' => $products,
