@@ -9,9 +9,9 @@ Route::group(['namespace' => 'Theme\Shopwise\Http\Controllers', 'middleware' => 
         Route::get('ajax/finder', 'ShopwiseController@ajaxGetFinder')
             ->name('public.ajax.finder');
 
-        Route::post('/find/blade', 'ShopwiseController@ajaxFindBlade')
+        Route::post('find/blade', 'ShopwiseController@ajaxFindBlade')
         ->name('search.blade');
- 
+
 
         Route::get('ajax/featured-product-categories', 'ShopwiseController@getFeaturedProductCategories')
             ->name('public.ajax.featured-product-categories');

@@ -132,6 +132,34 @@
             });
         </script>
     @endif
+    <script>
+      $(document).ready(function(){
+        $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+        $("#findbladeform").submit(function(e){
+            e.preventDefault();
+            var data = new FormData(this);
+
+            $.ajax({
+                type:"post",
+                url:"/find/blade",
+                data:data,
+                processData: false,
+                contentType: false,
+                success:function(res){
+                    console.log(res)
+
+                },
+                error:function(err){
+                    console.log(err)
+                }
+            })
+        })
+    });
+    </script>
 
     </body>
 </html>
