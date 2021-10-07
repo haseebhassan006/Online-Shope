@@ -133,7 +133,23 @@
         </script>
     @endif
     <script>
+     
+    </script>
+    <script>
       $(document).ready(function(){
+
+	$(".feet-slider input").on("change", function(e) {
+  	const isOn = e.currentTarget.checked;
+
+    if (isOn) {
+        alert('on')
+    	$(".feet").hide();
+        $(".inch").hide();
+    } else {
+    	$(".totalInches").show();
+    }
+  });
+
         $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

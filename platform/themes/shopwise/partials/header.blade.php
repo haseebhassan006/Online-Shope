@@ -2,7 +2,7 @@
 <html lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
-       
+
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=1" name="viewport"/>
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -38,61 +38,7 @@
     @if (is_plugin_active('newsletter') && theme_option('enable_newsletter_popup', 'yes') === 'yes')
         <div data-session-domain="{{ config('session.domain') ?? request()->getHost() }}"></div>
         <!-- Home Popup Section -->
-        <div class="modal fade subscribe_popup" id="newsletter-modal" data-time="{{ (int)theme_option('newsletter_show_after_seconds', 10) * 1000 }}" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"><i class="ion-ios-close-empty"></i></span>
-                        </button>
-                        <div class="row no-gutters">
-                            <div class="col-sm-5">
-                                @if (theme_option('newsletter_image'))
-                                    <div class="background_bg h-100" data-img-src="{{ RvMedia::getImageUrl(theme_option('newsletter_image')) }}"></div>
-                                @endif
-                            </div>
-                            <div class="col-sm-7">
-                                <div class="popup_content">
-                                    <div class="popup-text">
-                                        <div class="heading_s4">
-                                            <h4>{{ __('Subscribe and Get 25% Discount!') }}</h4>
-                                        </div>
-                                        <p>{{ __('Subscribe to the newsletter to receive updates about new products.') }}</p>
-                                    </div>
-                                    <form method="post" action="{{ route('public.newsletter.subscribe') }}" class="newsletter-form">
-                                        @csrf
-                                        <div class="form-group">
-                                            <input name="email" type="email" class="form-control rounded-0" placeholder="{{ __('Enter Your Email') }}">
-                                        </div>
-
-                                        @if (setting('enable_captcha') && is_plugin_active('captcha'))
-                                            <div class="form-group">
-                                                {!! Captcha::display() !!}
-                                            </div>
-                                        @endif
-
-                                        <div class="chek-form text-left form-group">
-                                            <div class="custome-checkbox">
-                                                <input class="form-check-input" type="checkbox" name="dont_show_again" id="dont_show_again" value="">
-                                                <label class="form-check-label" for="dont_show_again"><span>{{ __("Don't show this popup again!") }}</span></label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <button class="btn btn-block text-uppercase rounded-0" type="submit" style="background: #333; color: #fff;">{{ __('Subscribe') }}</button>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="newsletter-message newsletter-success-message" style="display: none"></div>
-                                            <div class="newsletter-message newsletter-error-message" style="display: none"></div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      
         <!-- End Screen Load Popup Section -->
     @endif
 

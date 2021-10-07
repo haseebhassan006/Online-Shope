@@ -426,8 +426,6 @@ class ShopwiseController extends PublicController
 
     public function ajaxFindBlade(Request $request, BaseHttpResponse $response){
 
-
-
           $brand = $request->brand;
           $attributes = array();
           $attributes['model'] = $request->model;
@@ -460,6 +458,7 @@ class ShopwiseController extends PublicController
             $products = Product::with('productAttributes')->with('brand')->get();
 
           }
+
 
 
 
