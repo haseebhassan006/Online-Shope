@@ -38,7 +38,7 @@
     @if (is_plugin_active('newsletter') && theme_option('enable_newsletter_popup', 'yes') === 'yes')
         <div data-session-domain="{{ config('session.domain') ?? request()->getHost() }}"></div>
         <!-- Home Popup Section -->
-      
+
         <!-- End Screen Load Popup Section -->
     @endif
 
@@ -117,7 +117,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <input class="form-control" name="q" value="{{ request()->input('q') }}" placeholder="{{ __('Search Product') }}..." required  type="text">
+                                    <input class="form-control" name="q" value="{{ request()->input('q') }}" placeholder="{{ __('Search Product') }}..." required  type="text" style="height:50px;">
                                     <button type="submit" class="search_btn"><i class="linearicons-magnifier"></i></button>
                                 </div>
                             </form>
