@@ -87,7 +87,7 @@ Theme::asset()->add('u-style', 'themes/shopwise/css/tomac.css');
                     </div> --}}
                     <div class="select-container small first totalInches">
                         <select id="blade-length-totalInches" title="Total Inches" name="bladesizeinche" class="validate-select blade-length-totalInches data-hj-whitelist">
-                            <option value="">choose</option>
+                            <option value="">Choose</option>
                             @foreach($bladelengthinches as $bladelengthinche)
                             <option value="{{ $bladelengthinche->id }}">{{ $bladelengthinche->title }}</option>
                             @endforeach
@@ -96,7 +96,7 @@ Theme::asset()->add('u-style', 'themes/shopwise/css/tomac.css');
                     </div>
                     <div class="select-container small">
                         <select id="blade-length-fraction" title="Fraction" class="validate-select blade-length-fraction data-hj-whitelist" name="bladesizefrac">
-                            <option value="">choose</option>
+                            <option value="">Choose</option>
                             @foreach($bladelengthfractions as $bladelengthfraction)
                             <option id="{{ $bladelengthfraction->id }}">{{ $bladelengthfraction->title }}</option>
                             @endforeach
@@ -108,7 +108,7 @@ Theme::asset()->add('u-style', 'themes/shopwise/css/tomac.css');
                     <div class="selection-label">Blade Size</div>
                     <div class="select-container small first">
                         <select id="blade-width-inch" title="Width" class="validate-select blade-width-inch data-hj-whitelist" name="bladelengthwidth">
-                            <option value="">choose</option>
+                            <option value="">Choose</option>
                             @foreach($bladesizewidths as $bladesizewidth)
                             <option name="{{ $bladesizewidth->id }}">{{ $bladesizewidth->title }}</option>
                             @endforeach
