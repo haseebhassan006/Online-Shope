@@ -155,7 +155,7 @@ Theme::asset()->add('u-style', 'themes/shopwise/css/tomac.css');
             <div class="selection-options">
                 <div class="swatch-opt-cross_section selection-swatch" data-role="swatch-options">
         <div class="field cross_section swatches-list">
-            @foreach($crossSections as $crossSection)
+            @foreach($crossSections as $index => $crossSection)
 
                                             <label for="{{ $crossSection->id }}">
                     <span class="swatch-label">{{ $crossSection->title }}</span>
@@ -166,9 +166,10 @@ Theme::asset()->add('u-style', 'themes/shopwise/css/tomac.css');
                         value="{{ $crossSection->id }}"
                         id="{{ $crossSection->id }}"
                         data-label="{{ $crossSection->title }}"
-                        checked
+                        @if (!$index) {!! "checked" !!} @endif
+
                         >
-                        <img class="swatch-image" src="{{ asset('storage/'.$crossSection->image) }}" alt="General Purpose" data-value="0">
+                        <img class="swatch-image" src="{{ asset('storage/'.$crossSection->image) }}" alt="General Purpose" data-value="0" >
                                 </label>
                 @endforeach
 
@@ -202,7 +203,7 @@ Theme::asset()->add('u-style', 'themes/shopwise/css/tomac.css');
                         value="{{ $material->id }}"
                         id="{{ $material->id }}"
                         data-label="{{ $material->title}}"
-                        checked
+                        @if (!$index) {!! "checked" !!} @endif
 
                         >
                      <img class="swatch-image" src="{{ asset('storage/'.$material->image) }}" alt="Steel" data-value="0">
