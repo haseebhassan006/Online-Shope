@@ -133,21 +133,35 @@
         </script>
     @endif
     <script>
-     
+
     </script>
     <script>
       $(document).ready(function(){
 
-	$(".feet-slider input").on("change", function(e) {
-  	const isOn = e.currentTarget.checked;
+	$("#changePara").change(function(e) {
+        if ($(this).is(':checked')) {
+            $('.one').css({"display": "block"});
+            $('.second').css({"display": "block"});
+            $('.third').css({"display": "block"});
 
-    if (isOn) {
-        alert('on')
-    	$(".feet").hide();
-        $(".inch").hide();
-    } else {
-    	$(".totalInches").show();
-    }
+            $('.forth').css({"display": "none"});
+            $('.fifth').css({"display": "none"});
+
+        }else {
+
+            $('.one').css({"display": "none"});
+            $('.second').css({"display": "none"});
+            $('.third').css({"display": "none"});
+            $('.forth').css({"display": "block"});
+            $('.fifth').css({"display": "block"});
+
+        }
+
+
+
+
+
+
   });
 
         $.ajaxSetup({

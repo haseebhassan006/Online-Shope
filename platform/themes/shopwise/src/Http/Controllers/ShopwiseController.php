@@ -492,6 +492,8 @@ return $theme->scope('bladeresult', $view)->render();
         $attribute_blade_size_thick_id = ProductAttributeSet::where('title','Blade Size(thickness)')->pluck('id')->first();
         $attribute_material_id = ProductAttributeSet::where('title','Material')->pluck('id')->first();
         $attribute_materialwidth_id = ProductAttributeSet::where('title','Material Width')->pluck('id')->first();
+        $attribute_length_feet_id = ProductAttributeSet::where('title','Blade Length(Feet)')->pluck('id')->first();
+        $attribute_length_inch_id = ProductAttributeSet::where('title','Blade Length(Inch)')->pluck('id')->first();
 
         $models = ProductAttribute::where('attribute_set_id',$attribute_model_id)->get();
         $bladelengthinches = ProductAttribute::where('attribute_set_id',$attribute_bladelengthinches_id )->get();
@@ -500,6 +502,8 @@ return $theme->scope('bladeresult', $view)->render();
         $bladesizewidth = ProductAttribute::where('attribute_set_id',$attribute_bladesize_width_id)->get();
         $bladesizethicks = ProductAttribute::where('attribute_set_id',$attribute_blade_size_thick_id)->get();
         $materials = ProductAttribute::where('attribute_set_id',$attribute_material_id)->get();
+        $lengthFeets = ProductAttribute::where('attribute_set_id',$attribute_length_feet_id)->get();
+        $lengthInches = ProductAttribute::where('attribute_set_id',$attribute_length_inch_id)->get();
         $materialwidths = ProductAttribute::where('attribute_set_id',$attribute_materialwidth_id)->get();
 
 
@@ -515,6 +519,8 @@ return $theme->scope('bladeresult', $view)->render();
             'bladesizewidths' => $bladesizewidth,
             'bladesizethicks' => $bladesizethicks,
             'materials' => $materials,
+            'lengthFeets' => $lengthFeets,
+            'lengthInches' => $lengthInches,
             'materialwidths' => $materialwidths
         ];
 

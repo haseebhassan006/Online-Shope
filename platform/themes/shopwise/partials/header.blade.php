@@ -126,7 +126,7 @@
                 </div>
             </div>
         </div>
-        <div class="bottom_header light_skin main_menu_uppercase bg_dark @if (url()->current() === url('')) mb-4 @endif">
+        <div class="bottom_header light_skin main_menu_uppercase bg_dark @if (url()->current() === url('')) mb-4 @endif" style="height:66px;">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-4 col-sm-6 col-4">
@@ -164,7 +164,7 @@
                                                 @endif
                                             </li>
                                         @else
-                                            @if ($loop->index == 10)
+                                        @if ($loop->index == 10)
                                             <li>
                                                 <ul class="more_slide_open" style="display: none;">
                                             @endif
@@ -231,4 +231,4 @@
             </div>
         </div>
     </header>
-    <!-- END HEADER -->
+

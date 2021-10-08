@@ -2,7 +2,7 @@
 @php
 Theme::asset()->add('core-style', 'themes/shopwise/css/findcss.css');
 Theme::asset()->add('u-style', 'themes/shopwise/css/tomac.css');
- Theme::partial('header')
+Theme::partial('header')
 @endphp
 <div class="section">
     <div class="container">
@@ -66,45 +66,58 @@ Theme::asset()->add('u-style', 'themes/shopwise/css/tomac.css');
 
             <div class="blade-select-section measurements">
                 <div class="selection blade-length">
-                    <div class="selection-label">Blade Length</div>
-                    {{-- <div class="select-container small first feet">
-                        <select id="blade-length-feet" title="Feet" class="validate-select blade-length-feet data-hj-whitelist">
-                            <option value="">Choose</option>
-                            @foreach($bladelengthinches as $bladelengthinche)
-                            <option value="{{ $bladelengthinche->id }}">{{ $bladelengthinche->title }}</option>
-                            @endforeach
-                        </select>
-                        <div class="select-label-small">Inches</div>
-                    </div> --}}
-                    {{-- <div class="select-container small inch">
-                        <select id="blade-length-inch" title="Inch" class="validate-select blade-length-inch data-hj-whitelist">
+                    <div class="selection blade-length">
 
-                            @foreach($bladelengthfractions as $bladelengthfraction)
-                            <option id="{{ $bladelengthfraction->id }}">{{ $bladelengthfraction->title }}</option>
-                            @endforeach
-                        </select>
-                        <div class="select-label-small">Fraction</div>
-                    </div> --}}
-                    <div class="select-container small first totalInches">
-                        <select id="blade-length-totalInches" title="Total Inches" name="bladesizeinche" class="validate-select blade-length-totalInches data-hj-whitelist">
-                            <option value="">Choose</option>
-                            @foreach($bladelengthinches as $bladelengthinche)
-                            <option value="{{ $bladelengthinche->id }}">{{ $bladelengthinche->title }}</option>
-                            @endforeach
-                        </select>
-                        <div class="select-label-small">Inches</div>
-                    </div>
-                    <div class="select-container small">
-                        <select id="blade-length-fraction" title="Fraction" class="validate-select blade-length-fraction data-hj-whitelist" name="bladesizefrac">
-                            <option value="">Choose</option>
-                            @foreach($bladelengthfractions as $bladelengthfraction)
-                            <option id="{{ $bladelengthfraction->id }}">{{ $bladelengthfraction->title }}</option>
-                            @endforeach
-                                                </select>
-                        <div class="select-label-small">Fraction</div>
-                    </div>
-                </div>
-                <div class="selection blade-width">
+                        <div class="selection-label">Blade Length</div>
+
+                                <div class="select-container small first one" style="display:none">
+                                   <select id="blade-length-feet" title="Feet" class="validate-select blade-length-feet data-hj-whitelist">
+                                       <option value="">Choose</option>
+                                    @foreach($lengthFeets as $lengthFeet)
+                                    <option value="{{ $lengthFeet->id }}">{{ $lengthFeet->title }}</option>
+                                    @endforeach
+                                    </select>
+                                   <div class="select-label-small">Feet</div>
+                                </div>
+                                <div class="select-container small second" style="display:none">
+                                   <select id="blade-length-inch" title="Inch" class="validate-select blade-length-inch data-hj-whitelist">
+                                       <option value="">Choose</option>
+                                       @foreach ($lengthInches as $lengthInch)
+                                       <option value="{{ $lengthInch->id }}">{{ $lengthInch->title }}</option>
+                                       @endforeach
+                                    </select>
+                                 <div class="select-label-small">Inch</div>
+                                </div>
+                                <div class="select-container small third" style="display:none">
+                                   <select id="blade-length-inch" title="Inch" class="validate-select blade-length-inch data-hj-whitelist">
+                                       <option value="">Choose</option>
+                                       @foreach($bladelengthfractions  as $fraction)
+                                        <option value="{{ $fraction->id }}">{{ $fraction->title }}</option>
+                                      @endforeach
+                                    </select>
+                                 <div class="select-label-small ">Fraction</div>
+                                </div>
+                               <div class="select-container small first forth">
+                                 <select id="blade-length-totalInches" title="Total Inches" class="validate-select blade-length-totalInches data-hj-whitelist">
+                                     <option value="">Choose</option>
+                                    @foreach($bladelengthinches as $inche)
+                                    <option value="{{ $inche->id }}">{{ $inche->title }}</option>
+                                    @endforeach
+                                 </select>
+                                  <div class="select-label-small">Inches</div>
+                               </div>
+                               <div class="select-container small fifth" >
+                                <select id="blade-length-inch" title="Inch" class="validate-select blade-length-inch data-hj-whitelist">
+                                    <option value="">Choose</option>
+                                    @foreach($bladelengthfractions  as $fraction)
+                                        <option value="{{ $fraction->id }}">{{ $fraction->title }}</option>
+                                      @endforeach
+                                 </select>
+                              <div class="select-label-small">Fraction</div>
+                             </div>
+                        </div>
+                   </div>
+                <div class="selection blade-width w2">
                     <div class="selection-label">Blade Size</div>
                     <div class="select-container small first">
                         <select id="blade-width-inch" title="Width" class="validate-select blade-width-inch data-hj-whitelist" name="bladelengthwidth">
@@ -120,7 +133,6 @@ Theme::asset()->add('u-style', 'themes/shopwise/css/tomac.css');
                     <div class="select-container small">
                         <select id="blade-blade_thickness-inch" title="Thickness" class="validate-select data-hj-whitelist" name="bladelengthick">
                             <option value="">Choose</option>
-
                             @foreach($bladesizethicks as $bladesizethick)
                             <option value="{{ $bladesizethick->id }}">{{  $bladesizethick->title }}</option>
                             @endforeach
@@ -128,14 +140,14 @@ Theme::asset()->add('u-style', 'themes/shopwise/css/tomac.css');
                         <div class="select-label-small">Thickness</div>
                     </div>
                 </div>
-                {{-- <div class="switch-container">
+               <div class="switch-container">
                     <span class="feet-switch-text">Inches</span>
                     <label class="feet-switch">
-                        <input type="checkbox" class="feet-slider">
+                        <input type="checkbox" class="feet-slider" id="changePara">
                         <span class="slider"></span>
                     </label>
                   <span class="feet-switch-text">Feet-Inches</span>
-                </div> --}}
+                </div>
                 <input type="hidden" name="length" id="blade-length"/>
                 <input type="hidden" name="blade_width" id="blade-width"/>
                 <input type="hidden" name="blade_thickness" id="blade-blade_thickness"/>
