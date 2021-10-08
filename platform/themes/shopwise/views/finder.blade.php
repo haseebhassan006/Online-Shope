@@ -66,7 +66,7 @@ Theme::partial('header')
 
             <div class="blade-select-section measurements">
                 <div class="selection blade-length">
-                    <div class="selection blade-length">
+
 
                         <div class="selection-label">Blade Length</div>
 
@@ -116,7 +116,7 @@ Theme::partial('header')
                               <div class="select-label-small">Fraction</div>
                              </div>
                         </div>
-                   </div>
+
                 <div class="selection blade-width w2">
                     <div class="selection-label">Blade Size</div>
                     <div class="select-container small first">
