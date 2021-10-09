@@ -10,14 +10,14 @@ Theme::partial('header')
             <div class="col-lg-12">
 <main id="maincontent" class="page-main" >
    <div class="row">
-    <a id="contentarea" tabindex="-1"></a>
-    <div class="container">
+     <a id="contentarea" tabindex="-1"></a>
+      <div class="container">
         <div class="page-title-wrapper">
            <h1 class="page-title">
             <span class="base" data-ui-id="page-title-wrapper" >@php Theme::set('pageName', __('Find the Blade You Need ') ); @endphp </span>
            </h1>
         </div>
-    </div>
+      </div>
     <div class="columns">
     <div class="bladefinder-wrapper">
         <form class="bladefinder-form" action="{{ route('search.blade') }}" method="post">
@@ -79,16 +79,16 @@ Theme::partial('header')
                                     </select>
                                    <div class="select-label-small">Feet</div>
                                 </div>
-                                <div class="select-container small second" style="display:none">
+                            <div class="select-container small second" style="display:none">
                                    <select id="blade-length-inch" title="Inch" class="validate-select blade-length-inch data-hj-whitelist">
                                        <option value="">Choose</option>
                                        @foreach ($lengthInches as $lengthInch)
                                        <option value="{{ $lengthInch->id }}">{{ $lengthInch->title }}</option>
                                        @endforeach
                                     </select>
-                                 <div class="select-label-small">Inch</div>
-                                </div>
-                                <div class="select-container small third" style="display:none">
+                                    <div class="select-label-small">Inch</div>
+                            </div>
+                            <div class="select-container small third" style="display:none">
                                    <select id="blade-length-inch" title="Inch" class="validate-select blade-length-inch data-hj-whitelist">
                                        <option value="">Choose</option>
                                        @foreach($bladelengthfractions  as $fraction)
@@ -96,37 +96,35 @@ Theme::partial('header')
                                       @endforeach
                                     </select>
                                  <div class="select-label-small ">Fraction</div>
-                                </div>
-                               <div class="select-container small first forth">
-                                 <select id="blade-length-totalInches" title="Total Inches" class="validate-select blade-length-totalInches data-hj-whitelist">
+                            </div>
+                            <div class="select-container small first forth">
+                                <select id="blade-length-totalInches" title="Total Inches" class="validate-select blade-length-totalInches data-hj-whitelist">
                                      <option value="">Choose</option>
                                     @foreach($bladelengthinches as $inche)
                                     <option value="{{ $inche->id }}">{{ $inche->title }}</option>
                                     @endforeach
-                                 </select>
-                                  <div class="select-label-small">Inches</div>
-                               </div>
-                               <div class="select-container small fifth" >
+                                </select>
+                                <div class="select-label-small">Inches</div>
+                            </div>
+                            <div class="select-container small fifth" >
                                 <select id="blade-length-inch" title="Inch" class="validate-select blade-length-inch data-hj-whitelist">
                                     <option value="">Choose</option>
                                     @foreach($bladelengthfractions  as $fraction)
                                         <option value="{{ $fraction->id }}">{{ $fraction->title }}</option>
                                       @endforeach
                                  </select>
-                              <div class="select-label-small">Fraction</div>
-                             </div>
+                                <div class="select-label-small">Fraction</div>
+                            </div>
                         </div>
 
                 <div class="selection blade-width w2">
                     <div class="selection-label">Blade Size</div>
-                    <div class="select-container small first">
+                     <div class="select-container small first">
                         <select id="blade-width-inch" title="Width" class="validate-select blade-width-inch data-hj-whitelist" name="bladelengthwidth">
                             <option value="">Choose</option>
                             @foreach($bladesizewidths as $bladesizewidth)
                             <option name="{{ $bladesizewidth->id }}">{{ $bladesizewidth->title }}</option>
                             @endforeach
-
-
                         </select>
                         <div class="select-label-small">Width</div>
                     </div>
@@ -168,8 +166,7 @@ Theme::partial('header')
                 <div class="swatch-opt-cross_section selection-swatch" data-role="swatch-options">
         <div class="field cross_section swatches-list">
             @foreach($crossSections as $index => $crossSection)
-
-                                            <label for="{{ $crossSection->id }}">
+               <label for="{{ $crossSection->id }}">
                     <span class="swatch-label">{{ $crossSection->title }}</span>
                     <input
                         type="radio"
@@ -179,22 +176,16 @@ Theme::partial('header')
                         id="{{ $crossSection->id }}"
                         data-label="{{ $crossSection->title }}"
                         @if (!$index) {!! "checked" !!} @endif
-
-                        >
-                        <img class="swatch-image" src="{{ asset('storage/'.$crossSection->image) }}" alt="General Purpose" data-value="0" >
-                                </label>
-                @endforeach
-
-                </div>
-    </div>
-
-    <script type="text/x-magento-init">
-
-    </script>
-            </div>
-        </div>
-    </section>
-    <section class="blade-option option-type">
+                    >
+                    <img class="swatch-image" src="{{ asset('storage/'.$crossSection->image) }}" alt="General Purpose" data-value="0" >
+                </label>
+            @endforeach
+         </div>
+     </div>
+   </div>
+ </div>
+</section>
+<section class="blade-option option-type">
         <div class="blade-option-header">
             <div class="step-number">3</div>
             <div class="step-text">What Material Are You Cutting?</div>
@@ -202,13 +193,11 @@ Theme::partial('header')
         <div class="blade-option-body">
             <div class="selection-options">
                 <div class="swatch-opt-type selection-swatch" data-role="swatch-options">
-        <div class="field type swatches-list">
-            @foreach($materials as $index => $material)
-             <label for="{{ $material->id }}">
-
-
-                    <span class="swatch-label">{{ $material->title}}</span>
-                    <input
+                    <div class="field type swatches-list">
+                       @foreach($materials as $index => $material)
+                    <label for="{{ $material->id }}">
+                         <span class="swatch-label">{{ $material->title}}</span>
+                       <input
                         type="radio"
                         name="material"
                         class="radio"
@@ -216,23 +205,16 @@ Theme::partial('header')
                         id="{{ $material->id }}"
                         data-label="{{ $material->title}}"
                         @if (!$index) {!! "checked" !!} @endif
-
                         >
                      <img class="swatch-image" src="{{ asset('storage/'.$material->image) }}" alt="Steel" data-value="0">
                     </label>
-                 @endforeach
-
-
-                </div>
-    </div>
-
-    <script type="text/x-magento-init">
-      }
-    </script>
-            </div>
-        </div>
-    </section>
-    <section class="blade-option option-thickness">
+                     @endforeach
+         </div>
+       </div>
+   </div>
+</div>
+</section>
+<section class="blade-option option-thickness">
         <div class="blade-option-header">
             <div class="step-number">4</div>
             <div class="step-text">What Are The Dimensions Of The Material?</div>
@@ -260,24 +242,19 @@ Theme::partial('header')
                             @foreach($materialwidths as $materialwidth)
                             <option id="{{ $materialwidth->id }}">{{ $materialwidth->title }}</option>
                             @endforeach
-
-
                         </select>
-            <div class="select-label-small">Inch</div>
+                 <div class="select-label-small">Inch</div>
             </div>
         </div>
     </div>
-        </div>
-    </section>
-
-
+</div>
+</section>
     <div class="blade-actions">
         <button type="submit" class="action secondary submit">
             <span>Find Blades</span>
         </button>
-
     </div>
-            </fieldset>
+    </fieldset>
         </form>
     </div>
 </div>

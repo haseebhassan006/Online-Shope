@@ -136,6 +136,7 @@
 
     </script>
     <script>
+
       $(document).ready(function(){
 
 	$("#changePara").change(function(e) {
@@ -154,41 +155,9 @@
             $('.third').css({"display": "none"});
             $('.forth').css({"display": "block"});
             $('.fifth').css({"display": "block"});
-
         }
-
-
-
-
-
-
   });
-
-        $.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
 });
-        $("#findbladeform").submit(function(e){
-            e.preventDefault();
-            var data = new FormData(this);
-
-            $.ajax({
-                type:"post",
-                url:"/find/blade",
-                data:data,
-                processData: false,
-                contentType: false,
-                success:function(res){
-                    console.log(res)
-
-                },
-                error:function(err){
-                    console.log(err)
-                }
-            })
-        })
-    });
     </script>
 
     </body>
