@@ -5,6 +5,7 @@
                 <span class="pr_flash" @if ($label->color) style="background-color: {{ $label->color }}" @endif>{{ $label->name }}</span>
             @endforeach
         @endif
+
         <div class="product_img">
             <a href="{{ $product->url }}">
                 <img src="{{ RvMedia::getImageUrl($product->image, 'medium', false, RvMedia::getDefaultImage()) }}" alt="{{ $product->name }}">
@@ -19,8 +20,9 @@
                     <li><a class="js-add-to-wishlist-button" href="#" data-url="{{ route('public.wishlist.add', $product->id) }}"><i class="icon-heart"></i></a></li>
                 </ul>
             </div>
-        </div>
-        <div class="product_info">
+          </div>
+        <a href="{{ $product->url }}">
+          <div class="product_info">
             <h6 class="product_title"><a href="{{ $product->url }}">{{ $product->name }}</a></h6>
             <div class="product_price">
                 <span class="price">{{ format_price($product->front_sale_price_with_taxes) }}</span>
@@ -61,6 +63,7 @@
                     <li><a class="js-add-to-wishlist-button" href="#" data-url="{{ route('public.wishlist.add', $product->id) }}"><i class="icon-heart"></i></a></li>
                 </ul>
             </div>
-        </div>
+           </div>
+        </a>
     </div>
 @endif

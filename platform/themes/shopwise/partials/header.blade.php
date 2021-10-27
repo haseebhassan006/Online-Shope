@@ -37,9 +37,7 @@
 
     @if (is_plugin_active('newsletter') && theme_option('enable_newsletter_popup', 'yes') === 'yes')
         <div data-session-domain="{{ config('session.domain') ?? request()->getHost() }}"></div>
-        <!-- Home Popup Section -->
 
-        <!-- End Screen Load Popup Section -->
     @endif
 
     @php
@@ -135,16 +133,27 @@
                                 <img src="{{ RvMedia::getImageUrl(theme_option('logo_footer') ? theme_option('logo_footer') : theme_option('logo')) }}" alt="{{ theme_option('site_title') }}" />
                             </a>
                         @endif
-                        <div class="categories_wrap">
+
+
+
+                    </div>
+
+                    <div class="col-lg-9 col-md-8 col-sm-6 col-8">
+                        <nav class="navbar navbar-expand-lg">
+                            <button class="navbar-toggler side_navbar_toggler" type="button" data-toggle="collapse" data-target="#navbarSidetoggle" aria-expanded="false">
+                                <span class="ion-android-menu"></span>
+                            </button>
+                            <div class="categories_wrap">
                             <button type="button" data-toggle="collapse" data-target="#navCatContent" aria-expanded="false" class="categories_btn">
-                                <i class="linearicons-menu"></i><span>{{ __('All Categories') }} </span>
+                                <!--<i class="linearicons-menu"></i>-->
+                                <span>Product Menu </span>
                             </button>
                             <div id="navCatContent" class="@if (url()->current() === url('') && theme_option('collapsing_product_categories_on_homepage', 'no') == 'no') nav_cat @endif navbar collapse">
                                 <ul>
                                     @foreach($categories as $category)
                                         @if ($loop->index < 10)
                                             <li @if ($category->children->count() > 0) class="dropdown dropdown-mega-menu" @endif>
-                                                <a class="dropdown-item nav-link @if ($category->children->count() > 0) dropdown-toggler @endif" href="{{ $category->url }}" @if ($category->children->count() > 0) data-toggle="dropdown" @endif>
+                                                <a class="dropdown-item nav-link @if ($category->children->count() > 0) dropdown-toggler @endif" href="{{ route('get.sub.categories',$category->id) }}" @if ($category->children->count() > 0) data-toggle="dropdown" @endif>
                                                     @if ($category->icon && count($category->icon->meta_value) > 0)
                                                         <i class="{{ $category->icon->meta_value[0] }}"></i>
                                                     @endif
@@ -155,7 +164,7 @@
                                                             <li class="mega-menu-col">
                                                                 <ul>
                                                                     @foreach($category->children as $childCategory)
-                                                                        <li><a class="dropdown-item nav-link nav_item" href="{{ $childCategory->url }}">{{ $childCategory->name }}</a></li>
+                                                                        <li><a class="dropdown-item nav-link nav_item" href="{{ route('get.sub.categories',$childCategory->id) }}">{{ $childCategory->name }}</a></li>
                                                                     @endforeach
                                                                 </ul>
                                                             </li>
@@ -169,7 +178,7 @@
                                                 <ul class="more_slide_open" style="display: none;">
                                             @endif
                                                 <li @if ($category->children->count() > 0) class="dropdown dropdown-mega-menu" @endif>
-                                                    <a class="dropdown-item nav-link nav_item @if ($category->children->count() > 0) dropdown-toggler @endif" href="{{ $category->url }}" @if ($category->children->count() > 0) data-toggle="dropdown" @endif>
+                                                    <a class="dropdown-item nav-link nav_item @if ($category->children->count() > 0) dropdown-toggler @endif" href="{{ route('get.sub.categories',$category->id) }}" @if ($category->children->count() > 0) data-toggle="dropdown" @endif>
                                                         @if (count($category->icon->meta_value) > 0)
                                                             <i class="{{ $category->icon->meta_value[0] }}"></i>
                                                         @endif
@@ -180,7 +189,7 @@
                                                                 <li class="mega-menu-col">
                                                                     <ul>
                                                                         @foreach($category->children as $childCategory)
-                                                                            <li><a class="dropdown-item nav-link nav_item" href="{{ $childCategory->url }}">{{ $childCategory->name }}</a></li>
+                                                                            <li><a class="dropdown-item nav-link nav_item" href="{{ route('get.sub.category',$category->id)}}">{{ $childCategory->name }}</a></li>
                                                                         @endforeach
                                                                     </ul>
                                                                 </li>
@@ -200,12 +209,6 @@
                                 @endif
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-9 col-md-8 col-sm-6 col-8">
-                        <nav class="navbar navbar-expand-lg">
-                            <button class="navbar-toggler side_navbar_toggler" type="button" data-toggle="collapse" data-target="#navbarSidetoggle" aria-expanded="false">
-                                <span class="ion-android-menu"></span>
-                            </button>
                             <div class="collapse navbar-collapse mobile_side_menu" id="navbarSidetoggle">
                                 {!! Menu::renderMenuLocation('main-menu', ['view' => 'menu', 'options' => ['class' => 'navbar-nav']]) !!}
                             </div>

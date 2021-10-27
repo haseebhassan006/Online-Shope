@@ -1,4 +1,5 @@
 @if ($product)
+
     <div class="product_wrap">
         @if ($product->isOutOfStock())
             <span class="pr_flash" style="background-color: #000">{{ __('Out Of Stock') }}</span>
@@ -9,6 +10,7 @@
                 @endforeach
             @endif
         @endif
+
         <div class="product_img">
             <a href="{{ $product->url }}">
                 <img src="{{ RvMedia::getImageUrl($product->image, 'medium', false, RvMedia::getDefaultImage()) }}" alt="{{ $product->name }}">
@@ -16,6 +18,7 @@
                     <img class="product_hover_img" src="{{ RvMedia::getImageUrl($product->images[1], 'medium', false, RvMedia::getDefaultImage()) }}" alt="{{ $product->name }}">
                 @endif
             </a>
+            <a href="{{ $product->url }}">
             <div class="product_action_box">
                 <ul class="list_none pr_action_btn">
                     @if (EcommerceHelper::isCartEnabled())
@@ -26,7 +29,9 @@
                     <li><a class="js-add-to-wishlist-button" href="#" data-url="{{ route('public.wishlist.add', $product->id) }}"><i class="icon-heart"></i></a></li>
                 </ul>
             </div>
+        </a>
         </div>
+
         <div class="product_info">
             <h6 class="product_title"><a href="{{ $product->url }}">{{ $product->name }}</a></h6>
             <div class="product_price">

@@ -433,6 +433,12 @@ class PublicProductController
         GetProductService $getProductService,
         BaseHttpResponse $response
     ) {
+        
+   
+
+   
+      
+     
         $slug = $this->slugRepository->getFirstBy([
             'key'            => $slug,
             'reference_type' => ProductCategory::class,

@@ -5,6 +5,7 @@ Route::group(['namespace' => 'Theme\Shopwise\Http\Controllers', 'middleware' => 
 
         Route::get('ajax/products', 'ShopwiseController@ajaxGetProducts')
             ->name('public.ajax.products');
+        Route::get('category/{id}','ShopwiseController@ajaxGetSubCategories')->name('get.sub.categories');
 
         Route::get('ajax/finder', 'ShopwiseController@ajaxGetFinder')
             ->name('public.ajax.finder');

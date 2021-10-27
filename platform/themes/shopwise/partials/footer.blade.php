@@ -157,6 +157,17 @@
             $('.fifth').css({"display": "block"});
         }
   });
+
+  $(".categories_btn").hover(function() {
+                $(".collapse").css("display", "block");
+            }, function() {
+                
+            });
+       
+          
+
+        
+
 });
     </script>
 

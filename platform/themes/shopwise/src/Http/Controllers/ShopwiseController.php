@@ -24,6 +24,7 @@ use Botble\Ecommerce\Repositories\Interfaces\ReviewInterface;
 use Botble\Ecommerce\Repositories\Interfaces\FlashSaleInterface;
 use Botble\Testimonial\Repositories\Interfaces\TestimonialInterface;
 use Botble\Ecommerce\Repositories\Interfaces\ProductVariationInterface;
+use Botble\Ecommerce\Models\ProductCategory;
 
 class ShopwiseController extends PublicController
 {
@@ -48,6 +49,8 @@ class ShopwiseController extends PublicController
             ];
         }
 
+
+
         $products = get_products_by_collections([
             'collections' => [
                 'by'       => 'id',
@@ -65,7 +68,9 @@ class ShopwiseController extends PublicController
             'withCount'   => $withCount,
         ]);
 
-        $data = [];
+
+
+
         foreach ($products as $product) {
             $data[] = Theme::partial('product-item', compact('product'));
         }
@@ -86,8 +91,25 @@ class ShopwiseController extends PublicController
 
         $categories = get_featured_product_categories();
 
+
         return $response->setData(ProductCategoryResource::collection($categories));
     }
+
+
+    public function ajaxGetSubCategories(Request $request,$id){
+
+        $categories = ProductCategory::where('parent_id',$id)->get();
+        $view = [
+            'categories' => $categories,
+            'n' =>"botble",
+            'name' => 'bladeresult',
+        ];
+        $theme = Theme::uses('shopwise')->layout('default');
+        return $theme->scope('categories', $view)->render();
+        
+
+    }
+
 
     /**
      * @param Request $request
@@ -473,11 +495,6 @@ class ShopwiseController extends PublicController
 
 $theme = Theme::uses('shopwise')->layout('default');
 return $theme->scope('bladeresult', $view)->render();
-
-
-
-
-
 
     }
     public function ajaxGetFinder(BaseHttpResponse $response){
