@@ -9,13 +9,12 @@
 
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css?family={{ urlencode(theme_option('primary_font', 'Poppins')) }}:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-
         <style>
             :root {
                 --color-1st: {{ theme_option('primary_color', '#FF324D') }};
                 --color-2nd: {{ theme_option('secondary_color', '#1D2224') }};
                 --primary-font: '{{ theme_option('primary_font', 'Poppins') }}', sans-serif;
-            }
+            }  
         </style>
 
         {!! Theme::header() !!}
@@ -157,15 +156,19 @@
                                                     @if ($category->icon && count($category->icon->meta_value) > 0)
                                                         <i class="{{ $category->icon->meta_value[0] }}"></i>
                                                     @endif
-                                                    <span>{{ $category->name }}</span></a>
+                                                    <span><h5>{{ $category->name }}</h5></span></a>
                                                 @if ($category->children->count() > 0)
+
                                                     <div class="dropdown-menu">
                                                         <ul class="mega-menu d-lg-flex">
                                                             <li class="mega-menu-col">
                                                                 <ul>
+                                                                    <ul class="mega-menu d-lg-flex">
                                                                     @foreach($category->children as $childCategory)
                                                                         <li><a class="dropdown-item nav-link nav_item" href="{{ route('get.sub.categories',$childCategory->id) }}">{{ $childCategory->name }}</a></li>
                                                                     @endforeach
+                                                                    </ul>
+                                                                 
                                                                 </ul>
                                                             </li>
                                                         </ul>
@@ -189,7 +192,7 @@
                                                                 <li class="mega-menu-col">
                                                                     <ul>
                                                                         @foreach($category->children as $childCategory)
-                                                                            <li><a class="dropdown-item nav-link nav_item" href="{{ route('get.sub.category',$category->id)}}">{{ $childCategory->name }}</a></li>
+                                                                            /* <li><a class="dropdown-item nav-link nav_item" href="{{ route('get.sub.category',$category->id)}}">{{ $childCategory->name }}</a></li> */
                                                                         @endforeach
                                                                     </ul>
                                                                 </li>
