@@ -14,10 +14,8 @@
                         </div> --}}
                     </div>
                     <div class="row shop_container grid">
-
                     @foreach($categories as $category)
-
-                    @if($category->children->count() > 0)
+                     @if($category->children->count() > 0)
                     <a href="{{route('get.sub.categories',$category->id) }}">
                         <div class="col-md-4 col-6">
                             <div class="product">
@@ -55,6 +53,7 @@
                                 <div class="product_info">
                                     <h6 class="product_title"><a href="{{$category->url}}">{{ $category->name }}</a></h6>
                                     <div class="pr_desc">
+                                        {{ $category->children }}
 
                                     </div>
                                 </div>

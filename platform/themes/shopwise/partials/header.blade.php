@@ -48,26 +48,18 @@ nav .dropdown button:hover{
   padding-bottom: 7px;
   cursor: pointer;
 }
-/* .header {
-  display: none;
-} */
 
-/* body {
-  position: relative;
-} */
 .content-nav {
   display: none;
   position: absolute;
-  left: 0;
-  width: 95vw;
+  left: -377px;
+  width: 100vw;
   margin: 0;
   padding-top: 20px;
   background: rgba(0, 0, 0);
   border-top: 15px transparent solid;
 
 }
-
-
 .dropdown:hover .content-nav {
   display: flex;
   justify-content: center;
@@ -150,7 +142,7 @@ h3{
     border-bottom-color: #eee;
     cursor: unset;
   }
-  nav .dropdown:hover .content {
+  nav .dropdown:hover .content-nav {
     display: none;
   }
 
@@ -168,8 +160,7 @@ h3{
   }
 
 }
-
-@media (max-width: 600px){
+ @media (max-width: 600px){
   nav {
     width: 100%;
   }
@@ -251,7 +242,9 @@ h3{
         } else {
             $categories = [];
         }
+
     @endphp
+
 
     <!-- START HEADER -->
     <header class="header_wrap @if (theme_option('enable_sticky_header', 'yes') == 'yes') fixed-top header_with_topbar @endif">
@@ -294,7 +287,7 @@ h3{
                 </div>
             </div>
         </div>
-        <div class="middle-header dark_skin">
+       <div class="middle-header dark_skin">
             <div class="container">
                 <div class="nav_block">
                     <a class="navbar-brand" href="{{ url('/') }}">
@@ -340,23 +333,24 @@ h3{
                         @endif
                     </div>
                     <div class="container">
-  <nav class="navbar navbar-expand-lg">
-    <div class='dropdown'>
-      <button>Product Menu<span class="fa fa-caret-right"></span></button>
-      <div class="content-nav">
-        <div class="row-nav">
-            @foreach($categories as $category)
-
-             <div class="column">
-                <h3>{{ $category->name }}</h3>
-                    @foreach($category->children as $key=>$childCategory)
-
-                       <a  href="{{ route('get.sub.categories',$childCategory->id) }}">{{ $childCategory->name }}</a>
-
+       <nav class="navbar navbar-expand-lg">
+         <div class='dropdown'>
+          <button>Product Menu<span class="fa fa-caret-right"></span></button>
+           <div class="content-nav">
+              <div class="row-nav">
+            @foreach(array_chunk($categories, 2) as $category)
+                    @foreach($category as $cat)
+                    <div class="column">
+                        <h3>{{ $cat->name }}</h3>
+                        @foreach ($cat->children as $childCategory)
+                         <a href="{{ route('get.sub.categories',$childCategory->id) }}">{{ $childCategory->name }}</a>
+                        @endforeach
+                    </div>
                     @endforeach
-              </div>
           @endforeach
         </div>
+
+
 
       </div>
     </div>
@@ -380,9 +374,9 @@ h3{
         <a href="javascript:void(0);" class="nav-link pr_search_trigger"><i class="linearicons-magnifier"></i></a>
     </div>
   </nav>
-</div>
+        </div>
                 </div>
             </div>
         </div>
-    </header>
+</header>
 
