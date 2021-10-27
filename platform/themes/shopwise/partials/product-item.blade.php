@@ -22,9 +22,14 @@
             <div class="product_action_box">
                 <ul class="list_none pr_action_btn">
                     @if (EcommerceHelper::isCartEnabled())
-                        <li class="add-to-cart"><a class="add-to-cart-button" data-id="{{ $product->id }}" href="#" data-url="{{ route('public.cart.add-to-cart') }}"><i class="icon-basket-loaded"></i> {{ __('Add To Cart') }}</a></li>
+                        <li class="add-to-cart">
+                            <a class="add-to-cart-button" data-id="{{ $product->id }}" href="#" data-url="{{ route('public.cart.add-to-cart') }}">
+                                <i class="icon-basket-loaded"></i>
+                                {{ __('Add To Cart') }}
+                            </a>
+                        </li>
                     @endif
-                    <li><a href="#" class="js-add-to-compare-button" data-url="{{ route('public.compare.add', $product->id) }}"><i class="icon-shuffle"></i></a></li>
+                    {{-- <li><a href="#" class="js-add-to-compare-button" data-url="{{ route('public.compare.add', $product->id) }}"><i class="icon-shuffle"></i></a></li> --}}
                     <li><a href="{{ route('public.ajax.quick-view', $product->id) }}" class="popup-ajax" rel="nofollow"><i class="icon-magnifier-add"></i></a></li>
                     <li><a class="js-add-to-wishlist-button" href="#" data-url="{{ route('public.wishlist.add', $product->id) }}"><i class="icon-heart"></i></a></li>
                 </ul>

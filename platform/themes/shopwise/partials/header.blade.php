@@ -337,38 +337,21 @@ h3{
                                 <img src="{{ RvMedia::getImageUrl(theme_option('logo_footer') ? theme_option('logo_footer') : theme_option('logo')) }}" alt="{{ theme_option('site_title') }}" />
                             </a>
                         @endif
-
-
-
                     </div>
-
                     <div class="container">
-
   <nav class="navbar navbar-expand-lg">
     <div class='dropdown'>
       <button>Product Menu<span class="fa fa-caret-right"></span></button>
       <div class="content-nav">
         <div class="row-nav">
             @foreach($categories as $category)
-           @php $max_iteration = round(count($category->children) / 3) + 1; @endphp
+
              <div class="column">
                 <h3>{{ $category->name }}</h3>
                     @foreach($category->children as $key=>$childCategory)
                        <a  href="{{ route('get.sub.categories',$childCategory->id) }}">{{ $childCategory->name }}</a>
                     @endforeach
               </div>
-              @if(($key + 1) % $max_iteration == 0)
-
-            <li class="column">
-                @foreach($category->children as $key=>$childCategory)
-                       <a  href="{{ route('get.sub.categories',$childCategory->id) }}">{{ $childCategory->name }}</a>
-                    @endforeach
-
-            </li>
-              @endif
-
-
-
           @endforeach
         </div>
 

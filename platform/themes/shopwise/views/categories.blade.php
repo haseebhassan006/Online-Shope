@@ -1,5 +1,5 @@
 
-@php Theme::set('pageName', __('Categories')) @endphp
+@php Theme::set('pageName', __()) @endphp
 <div class="section">
 
     <form action="{{ URL::current() }}" method="GET">
@@ -14,7 +14,6 @@
                         </div> --}}
                     </div>
                     <div class="row shop_container grid">
-
                     @foreach($categories as $category)
 
                     @if($category->children->count() > 0)
@@ -31,6 +30,7 @@
                                 <div class="product_info">
                                     <h6 class="product_title"><a href="{{route('get.sub.categories',$category->id) }}">{{ $category->name }}</a></h6>
                                     <div class="pr_desc">
+
 
                                     </div>
                                 </div>
