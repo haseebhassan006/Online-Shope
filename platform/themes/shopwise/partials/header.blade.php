@@ -350,14 +350,25 @@ h3{
       <div class="content-nav">
         <div class="row-nav">
             @foreach($categories as $category)
-          <div class="column">
-            <h3>{{ $category->name }}</h3>
-            @if ($category->children->count() > 0)
-                @foreach($category->children as $childCategory)
-                   <a  href="{{ route('get.sub.categories',$childCategory->id) }}">{{ $childCategory->name }}</a>
-                @endforeach
-            @endif
-          </div>
+           @php $max_iteration = round(count($category->children) / 3) + 1; @endphp
+             <div class="column">
+                <h3>{{ $category->name }}</h3>
+                    @foreach($category->children as $key=>$childCategory)
+                       <a  href="{{ route('get.sub.categories',$childCategory->id) }}">{{ $childCategory->name }}</a>
+                    @endforeach
+              </div>
+              @if(($key + 1) % $max_iteration == 0)
+
+            <li class="column">
+                @foreach($category->children as $key=>$childCategory)
+                       <a  href="{{ route('get.sub.categories',$childCategory->id) }}">{{ $childCategory->name }}</a>
+                    @endforeach
+
+            </li>
+              @endif
+
+
+
           @endforeach
         </div>
 
