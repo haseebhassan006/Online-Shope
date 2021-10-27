@@ -67,6 +67,7 @@ nav .dropdown button:hover{
 
 }
 
+
 .dropdown:hover .content-nav {
   display: flex;
   justify-content: center;
@@ -153,7 +154,7 @@ h3{
     display: none;
   }
 
-  .content h2 {
+  .content-nav h2 {
     display: none;
   }
   .row-nav {
@@ -349,7 +350,9 @@ h3{
              <div class="column">
                 <h3>{{ $category->name }}</h3>
                     @foreach($category->children as $key=>$childCategory)
+
                        <a  href="{{ route('get.sub.categories',$childCategory->id) }}">{{ $childCategory->name }}</a>
+
                     @endforeach
               </div>
           @endforeach
