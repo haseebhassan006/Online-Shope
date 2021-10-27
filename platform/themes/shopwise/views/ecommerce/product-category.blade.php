@@ -16,25 +16,9 @@
                         @if ($products->count() > 0)
                             @foreach($products as $product)
                                 <div class="col-md-4 col-6">
-                                    {{-- {!! Theme::partial('product-item-grid', compact('product')) !!} --}}
+                                    {!! Theme::partial('product-item-grid', compact('product')) !!}
 
-                                    <table>
-                                        <thead>
-                                            <th>Item Number</th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
+                                   
 
 
                                     
