@@ -338,15 +338,25 @@ h3{
           <button>Product Menu<span class="fa fa-caret-right"></span></button>
            <div class="content-nav">
               <div class="row-nav">
-            @foreach(array_chunk($categories, 2) as $category)
-                    @foreach($category as $cat)
+          
+            @foreach($categories as $category)
+                    
                     <div class="column">
-                        <h3>{{ $cat->name }}</h3>
-                        @foreach ($cat->children as $childCategory)
-                         <a href="{{ route('get.sub.categories',$childCategory->id) }}">{{ $childCategory->name }}</a>
-                        @endforeach
+                        <h3>{{ $category->name }}</h3>
+                   
+                        @foreach ($category->children as $key=>$childCategory)
+                        <div class="column">
+                         <a href="{{ route('get.sub.categories',$childCategory->id) }}">> {{ $childCategory->name }}</a>
+                        </div>
+                        @if ($loop->iteration % 3 == 0)
                     </div>
-                    @endforeach
+                    <div class="column">
+                       
+                @endif
+                        @endforeach
+                     
+                    </div>
+                
           @endforeach
         </div>
 
