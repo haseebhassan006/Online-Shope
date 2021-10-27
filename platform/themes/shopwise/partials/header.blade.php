@@ -14,7 +14,212 @@
                 --color-1st: {{ theme_option('primary_color', '#FF324D') }};
                 --color-2nd: {{ theme_option('secondary_color', '#1D2224') }};
                 --primary-font: '{{ theme_option('primary_font', 'Poppins') }}', sans-serif;
-            }  
+            }
+/* nav {
+  width: 70%;
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  opacity: 1;
+} */
+
+nav .dropdown button{
+  width: max-content;
+  padding: 10px 20px;
+  text-align: center;
+  font-weight: bold;
+  background: none;
+  outline: none;
+  border: none;
+  color:#fff;
+}
+nav .dropdown button span {
+  font-size: 1.25rem;
+  display: none;
+}
+
+nav .dropdown button:hover{
+  color: #fff;
+  text-decoration: underline;
+  border-bottom: solid 3p;
+  padding-bottom: 7px;
+  cursor: pointer;
+}
+/* .header {
+  display: none;
+} */
+
+/* body {
+  position: relative;
+} */
+.content-nav {
+  display: none;
+  position: absolute;
+  left: 0;
+  width: 95vw;
+  margin: 0;
+  padding-top: 20px;
+  background: rgba(0, 0, 0);
+  border-top: 15px transparent solid;
+
+}
+
+.dropdown:hover .content-nav {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.row-nav {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 25px;
+
+}
+h2{
+  background: rgba(220,220,220);
+  color:#fff;
+  text-align: center;
+  width: 100%;
+  padding: 25px 0;
+  margin-top: -35px;
+  font-size: 2rem;
+}
+
+h3{
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.row-nav :not(last-child){
+  margin-right: 35px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.column a {
+  color:#fff;
+  text-decoration: none;
+  font-size: .9rem;
+}
+.column a:not(last-child){
+  margin-bottom: 10px;
+}
+.column a:hover {
+  color:#fff;
+  text-decoration: underline;
+}
+@media (max-width: 800px){
+
+/* nav {
+    width: 50%;
+    flex-direction: column;
+    height: 100%;
+    padding: unset;
+    margin: unset;
+    text-align: left;
+    align-items: flex-start;
+    justify-content: flex-start;
+    display: none;
+  } */
+
+  nav .dropdown button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #eee;
+  }
+  nav .dropdown button span {
+    display: inline;
+  }
+  nav .dropdown button:hover{
+    color: black;
+    text-decoration: none;
+    border-bottom-color: #eee;
+    cursor: unset;
+  }
+  nav .dropdown:hover .content {
+    display: none;
+  }
+
+  .content h2 {
+    display: none;
+  }
+  .row-nav {
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+  }
+  .column {
+    padding: 0 20px;
+    margin: 0 0 10px 0;
+  }
+
+}
+
+@media (max-width: 600px){
+  nav {
+    width: 100%;
+  }
+}
+
+/* Animation for hamburger menu */
+.animInfo {
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  animation-timing-fucntion: ease;
+}
+@keyframes bar1Anim {
+  0%{transform: rotate(0deg) translate(0px);}
+  100%{transform: rotate(45deg) translate(6px, 10px);}
+}
+@keyframes bar2Anim {
+  0%{opacity: 1;}
+  100%{opacity: 0;}
+}
+@keyframes bar3Anim {
+  0%{transform: rotate(0deg) translate(0px);}
+  100%{transform: rotate(-45deg) translate(6px, -10px);}
+}
+
+@keyframes bar1AnimReverse {
+  0%{transform: rotate(45deg) translate(6px, 10px);}
+  100%{transform: rotate(0deg) translate(0px);}
+}
+@keyframes bar2AnimReverse {
+  0%{opacity: 0;}
+  100%{opacity: 1;}
+}
+@keyframes bar3AnimReverse {
+  0%{transform: rotate(-45deg) translate(6px, -10px);}
+  100%{transform: rotate(0deg) translate(0px);}
+}
+
+/* Animation for navigation appearing */
+@keyframes navAnim {
+  0%{opacity: 0;}
+  100%{opacity: 1;}
+}
+@keyframes navAnimReverse {
+  0%{opacity: 1;}
+  100%{opacity: 0;}
+}
+@media (min-width: 801px){
+  nav {
+    opacity: 1 !important;
+  }
+}
         </style>
 
         {!! Theme::header() !!}
@@ -137,102 +342,48 @@
 
                     </div>
 
-                    <div class="col-lg-9 col-md-8 col-sm-6 col-8">
-                        <nav class="navbar navbar-expand-lg">
-                            <button class="navbar-toggler side_navbar_toggler" type="button" data-toggle="collapse" data-target="#navbarSidetoggle" aria-expanded="false">
-                                <span class="ion-android-menu"></span>
-                            </button>
-                            <div class="categories_wrap">
-                            <button type="button" data-toggle="collapse" data-target="#navCatContent" aria-expanded="false" class="categories_btn">
-                                <!--<i class="linearicons-menu"></i>-->
-                                <span>Product Menu </span>
-                            </button>
-                            <div id="navCatContent" class="@if (url()->current() === url('') && theme_option('collapsing_product_categories_on_homepage', 'no') == 'no') nav_cat @endif navbar collapse">
-                                <ul>
-                                    @foreach($categories as $category)
-                                        @if ($loop->index < 10)
-                                            <li @if ($category->children->count() > 0) class="dropdown dropdown-mega-menu" @endif>
-                                                <a class="dropdown-item nav-link @if ($category->children->count() > 0) dropdown-toggler @endif" href="{{ route('get.sub.categories',$category->id) }}" @if ($category->children->count() > 0) data-toggle="dropdown" @endif>
-                                                    @if ($category->icon && count($category->icon->meta_value) > 0)
-                                                        <i class="{{ $category->icon->meta_value[0] }}"></i>
-                                                    @endif
-                                                    <span><h5>{{ $category->name }}</h5></span></a>
-                                                @if ($category->children->count() > 0)
+                    <div class="container">
 
-                                                    <div class="dropdown-menu">
-                                                        <ul class="mega-menu d-lg-flex">
-                                                            <li class="mega-menu-col">
-                                                                <ul>
-                                                                    <ul class="mega-menu d-lg-flex">
-                                                                    @foreach($category->children as $childCategory)
-                                                                        <li><a class="dropdown-item nav-link nav_item" href="{{ route('get.sub.categories',$childCategory->id) }}">{{ $childCategory->name }}</a></li>
-                                                                    @endforeach
-                                                                    </ul>
-                                                                 
-                                                                </ul>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                @endif
-                                            </li>
-                                        @else
-                                        @if ($loop->index == 10)
-                                            <li>
-                                                <ul class="more_slide_open" style="display: none;">
-                                            @endif
-                                                <li @if ($category->children->count() > 0) class="dropdown dropdown-mega-menu" @endif>
-                                                    <a class="dropdown-item nav-link nav_item @if ($category->children->count() > 0) dropdown-toggler @endif" href="{{ route('get.sub.categories',$category->id) }}" @if ($category->children->count() > 0) data-toggle="dropdown" @endif>
-                                                        @if (count($category->icon->meta_value) > 0)
-                                                            <i class="{{ $category->icon->meta_value[0] }}"></i>
-                                                        @endif
-                                                    <span>{{ $category->name }}</span></a>
-                                                    @if ($category->children->count() > 0)
-                                                        <div class="dropdown-menu">
-                                                            <ul class="mega-menu d-lg-flex">
-                                                                <li class="mega-menu-col">
-                                                                    <ul>
-                                                                        @foreach($category->children as $childCategory)
-                                                                            /* <li><a class="dropdown-item nav-link nav_item" href="{{ route('get.sub.category',$category->id)}}">{{ $childCategory->name }}</a></li> */
-                                                                        @endforeach
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    @endif
-                                                </li>
-                                            @if ($loop->last)
-                                                </ul>
-                                            </li>
-                                            @endif
-                                        @endif
-                                    @endforeach
-                                </ul>
-                                @if (count($categories) > 10)
-                                <div class="more_categories">{{ __('More Categories') }}</div>
-                                @endif
-                            </div>
-                        </div>
-                            <div class="collapse navbar-collapse mobile_side_menu" id="navbarSidetoggle">
-                                {!! Menu::renderMenuLocation('main-menu', ['view' => 'menu', 'options' => ['class' => 'navbar-nav']]) !!}
-                            </div>
-                            @if (is_plugin_active('ecommerce'))
-                                <ul class="navbar-nav attr-nav align-items-center">
-                                    <li><a href="@if (!auth('customer')->check()) {{ route('customer.overview') }} @else {{ route('customer.login') }} @endif" class="nav-link"><i class="linearicons-user"></i></a></li>
-                                    <li><a href="{{ route('public.wishlist') }}" class="nav-link btn-wishlist"><i class="linearicons-heart"></i><span class="wishlist_count">{{ !auth('customer')->check() ? Cart::instance('wishlist')->count() : auth('customer')->user()->wishlist()->count() }}</span></a></li>
-                                    @if (EcommerceHelper::isCartEnabled())
-                                        <li class="dropdown cart_dropdown"><a class="nav-link cart_trigger btn-shopping-cart" href="#" data-toggle="dropdown"><i class="linearicons-cart"></i><span class="cart_count">{{ Cart::instance('cart')->count() }}</span></a>
-                                            <div class="cart_box dropdown-menu dropdown-menu-right">
-                                                {!! Theme::partial('cart') !!}
-                                            </div>
-                                        </li>
-                                    @endif
-                                </ul>
-                            @endif
-                            <div class="pr_search_icon">
-                                <a href="javascript:void(0);" class="nav-link pr_search_trigger"><i class="linearicons-magnifier"></i></a>
-                            </div>
-                        </nav>
+  <nav class="navbar navbar-expand-lg">
+    <div class='dropdown'>
+      <button>Product Menu<span class="fa fa-caret-right"></span></button>
+      <div class="content-nav">
+        <div class="row-nav">
+            @foreach($categories as $category)
+          <div class="column">
+            <h3>{{ $category->name }}</h3>
+            @if ($category->children->count() > 0)
+                @foreach($category->children as $childCategory)
+                   <a  href="{{ route('get.sub.categories',$childCategory->id) }}">{{ $childCategory->name }}</a>
+                @endforeach
+            @endif
+          </div>
+          @endforeach
+        </div>
+
+      </div>
+    </div>
+    <div class="collapse navbar-collapse mobile_side_menu" id="navbarSidetoggle">
+        {!! Menu::renderMenuLocation('main-menu', ['view' => 'menu', 'options' => ['class' => 'navbar-nav']]) !!}
+    </div>
+    @if (is_plugin_active('ecommerce'))
+        <ul class="navbar-nav attr-nav align-items-center">
+            <li><a href="@if (!auth('customer')->check()) {{ route('customer.overview') }} @else {{ route('customer.login') }} @endif" class="nav-link"><i class="linearicons-user"></i></a></li>
+            <li><a href="{{ route('public.wishlist') }}" class="nav-link btn-wishlist"><i class="linearicons-heart"></i><span class="wishlist_count">{{ !auth('customer')->check() ? Cart::instance('wishlist')->count() : auth('customer')->user()->wishlist()->count() }}</span></a></li>
+            @if (EcommerceHelper::isCartEnabled())
+                <li class="dropdown cart_dropdown"><a class="nav-link cart_trigger btn-shopping-cart" href="#" data-toggle="dropdown"><i class="linearicons-cart"></i><span class="cart_count">{{ Cart::instance('cart')->count() }}</span></a>
+                    <div class="cart_box dropdown-menu dropdown-menu-right">
+                        {!! Theme::partial('cart') !!}
                     </div>
+                </li>
+            @endif
+        </ul>
+    @endif
+    <div class="pr_search_icon">
+        <a href="javascript:void(0);" class="nav-link pr_search_trigger"><i class="linearicons-magnifier"></i></a>
+    </div>
+  </nav>
+</div>
                 </div>
             </div>
         </div>

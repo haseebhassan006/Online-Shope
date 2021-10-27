@@ -35,6 +35,7 @@ class ShopwiseController extends PublicController
      */
     public function ajaxGetProducts(Request $request, BaseHttpResponse $response)
     {
+
         if (!$request->ajax() || !$request->wantsJson()) {
             return $response->setNextUrl(route('public.index'));
         }
@@ -106,7 +107,7 @@ class ShopwiseController extends PublicController
         ];
         $theme = Theme::uses('shopwise')->layout('default');
         return $theme->scope('categories', $view)->render();
-        
+
 
     }
 

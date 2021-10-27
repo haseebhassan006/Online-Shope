@@ -14,28 +14,28 @@
                         </div> --}}
                     </div>
                     <div class="row shop_container grid">
-              
+
                     @foreach($categories as $category)
-                    
-                    @if($category->children->count() > 0)   
+
+                    @if($category->children->count() > 0)
                     <a href="{{route('get.sub.categories',$category->id) }}">
                         <div class="col-md-4 col-6">
                             <div class="product">
-                           
+
                                 <div class="product_img">
-                                    
+
                                     <img src="{{ RvMedia::getImageUrl($category->image, 'medium', false, RvMedia::getDefaultImage()) }}" alt="{{ $category->name }}">
 
                                 </div>
-                               
+
                                 <div class="product_info">
                                     <h6 class="product_title"><a href="{{route('get.sub.categories',$category->id) }}">{{ $category->name }}</a></h6>
                                     <div class="pr_desc">
-                                 
+
                                     </div>
                                 </div>
-                            
-                        
+
+
                             </div>
                         </div>
                     </a>
@@ -43,34 +43,34 @@
                     <a href="{{ $category->url }}">
                         <div class="col-md-4 col-6">
                             <div class="product">
-                           
+
                                 <div class="product_img">
-                                    
+
                                     <img src="{{ RvMedia::getImageUrl($category->image, 'medium', false, RvMedia::getDefaultImage()) }}" alt="{{ $category->name }}">
 
-    
+
                                 </div>
-                               
+
                                 <div class="product_info">
                                     <h6 class="product_title"><a href="{{$category->url}}">{{ $category->name }}</a></h6>
                                     <div class="pr_desc">
-                                 
+
                                     </div>
                                 </div>
-                            
-                        
+
+
                             </div>
                         </div>
                     </a>
                     @endif
-                  
-                      
+
+
                     @endforeach
-                      
-                  
+
+
                     </div>
                 </div>
-              
+
             </div>
         </div>
     </form>

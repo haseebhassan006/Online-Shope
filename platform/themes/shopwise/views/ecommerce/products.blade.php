@@ -1,6 +1,7 @@
 @php Theme::set('pageName', __('Products')) @endphp
 
 <div class="section">
+    
     <form action="{{ URL::current() }}" method="GET">
         <div class="container">
             <div class="row">
