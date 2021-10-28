@@ -56,7 +56,7 @@ nav .dropdown button:hover{
   width: 100vw;
   margin: 0;
   padding-top: 20px;
-  background: rgba(0, 0, 0);
+  background: #1d2224;
   border-top: 15px transparent solid;
 
 }
@@ -84,8 +84,12 @@ h2{
   font-size: 2rem;
 }
 
+nav .dropdown:hover .content-nav h3{
+    color:#f30303;
+
+}
 h3{
-  font-size: 1rem;
+    font-size: 1rem;
   font-weight: bold;
   margin-bottom: 15px;
 }
@@ -338,12 +342,12 @@ h3{
           <button>Product Menu<span class="fa fa-caret-right"></span></button>
            <div class="content-nav">
               <div class="row-nav">
-          
+
             @foreach($categories as $category)
-                    
+
                     <div class="column">
                         <h3>{{ $category->name }}</h3>
-                   
+
                         @foreach ($category->children as $key=>$childCategory)
                         <div class="column">
                          <a href="{{ route('get.sub.categories',$childCategory->id) }}">> {{ $childCategory->name }}</a>
@@ -351,12 +355,12 @@ h3{
                         @if ($loop->iteration % 3 == 0)
                     </div>
                     <div class="column">
-                       
+
                 @endif
                         @endforeach
-                     
+
                     </div>
-                
+
           @endforeach
         </div>
 
