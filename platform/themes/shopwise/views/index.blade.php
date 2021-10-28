@@ -15,7 +15,7 @@
                 <div>[simple-slider key="home-slider"][/simple-slider]</div>
                 <div>[featured-product-categories title="Top Categories" subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim Nullam nunc varius."][/featured-product-categories]</div>
                 <div>[flash-sale title="Best deals for you"][/flash-sale]</div>
-                <div>[product-collections title="Exclusive Products"][/product-collections]</div>
+                {{-- <div>[product-collections title="Exclusive Products"][/product-collections]</div> --}}
                 <div>[banners image1="general/b-1.jpg" url1="/product-categories/headphone" image2="general/b-2.jpg" url2="/product-categories/camera" image3="general/b-3.jpg" url3="/product-categories/watches"][/banners]</div>
                 <div>[trending-products title="Trending Products"][[/trending-products]</div>
                 <div>[product-blocks featured_product_title="Featured Products" top_rated_product_title="Top Rated Products" on_sale_product_title="On Sale Products"][/product-blocks]</div>

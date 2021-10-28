@@ -209,14 +209,13 @@ class ProductCategoryController extends BaseController
     private function getForm($model = null)
     {
         $options = ['template' => 'core/base::forms.form-no-wrap'];
+       
         if ($model) {
             $options['model'] = $model;
         }
 
         $form = app(FormBuilder::class)->create(ProductCategoryForm::class, $options);
-
         $form = $this->setFormOptions($form, $model);
-
         return $form->renderForm();
     }
 
@@ -231,14 +230,11 @@ class ProductCategoryController extends BaseController
         if (!$model) {
             $form->setUrl(route('product-categories.create'));
         }
-
         if (!Auth::user()->hasPermission('product-categories.create') && !$model) {
             $class = $form->getFormOption('class');
             $form->setFormOption('class', $class . ' d-none');
         }
-
         $form->setFormOptions($this->getOptions($options));
-
         return $form;
     }
 
@@ -256,6 +252,7 @@ class ProductCategoryController extends BaseController
             'editRoute'   => 'product-categories.edit',
             'deleteRoute' => 'product-categories.destroy',
         ], $options);
+       
     }
 
     /**

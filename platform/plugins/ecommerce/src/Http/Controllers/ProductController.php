@@ -36,9 +36,9 @@ class ProductController extends BaseController
     public function index(ProductTable $dataTable)
     {
         page_title()->setTitle(trans('plugins/ecommerce::products.name'));
-
-        Assets::addScripts(['bootstrap-editable'])
+    Assets::addScripts(['bootstrap-editable'])
             ->addStyles(['bootstrap-editable']);
+        
 
         return $dataTable->renderTable();
     }
@@ -49,9 +49,9 @@ class ProductController extends BaseController
      */
     public function create(FormBuilder $formBuilder)
     {
-        page_title()->setTitle(trans('plugins/ecommerce::products.create'));
+         page_title()->setTitle(trans('plugins/ecommerce::products.create'));
 
-        Assets::addStyles(['datetimepicker'])
+    Assets::addStyles(['datetimepicker'])
             ->addScripts([
                 'moment',
                 'datetimepicker',
@@ -65,6 +65,9 @@ class ProductController extends BaseController
                 'vendor/core/plugins/ecommerce/js/edit-product.js',
             ]);
 
+
+
+
         return $formBuilder->create(ProductForm::class)->renderForm();
     }
 
@@ -76,13 +79,12 @@ class ProductController extends BaseController
     public function edit($id, FormBuilder $formBuilder)
     {
         $product = $this->productRepository->findOrFail($id);
-
         if ($product->is_variation) {
             abort(404);
         }
 
         page_title()->setTitle(trans('plugins/ecommerce::products.edit', ['name' => $product->name]));
-
+       
         Assets::addStyles(['datetimepicker'])
             ->addScripts([
                 'moment',
