@@ -166,11 +166,14 @@ h3{
   }
 
 }
+.
  @media (max-width: 600px){
-  nav {
+  /* nav {
     width: 100%;
-  }
+  } */
 }
+
+
 
 /* Animation for hamburger menu */
 .animInfo {
@@ -359,9 +362,9 @@ h3{
                     <div class="column">
 
                 @endif
-                        @endforeach
+            @endforeach
 
-                    </div>
+                </div>
 
           @endforeach
         </div>

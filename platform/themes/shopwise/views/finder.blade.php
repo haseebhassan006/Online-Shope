@@ -1,8 +1,10 @@
 
 @php
 Theme::asset()->add('core-style', 'themes/shopwise/css/findcss.css');
+Theme::asset()->add('head-style', 'themes/shopwise/css/head.css');
 Theme::asset()->add('u-style', 'themes/shopwise/css/tomac.css');
 Theme::partial('header')
+
 @endphp
 <div class="section">
     <div class="container">
