@@ -99,7 +99,8 @@ class ShopwiseController extends PublicController
 
     public function ajaxGetSubCategories(Request $request,$id){
 
-        $categories = ProductCategory::where('parent_id',$id)->get();
+        $categories = ProductCategory::where('id',$id)->with('children')->get();
+
         $view = [
             'categories' => $categories,
             'n' =>"botble",

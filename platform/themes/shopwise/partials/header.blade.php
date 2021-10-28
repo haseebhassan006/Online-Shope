@@ -35,6 +35,8 @@ nav .dropdown button{
   outline: none;
   border: none;
   color:#fff;
+  background-color: #f30707;
+height: 66px;
 }
 nav .dropdown button span {
   font-size: 1.25rem;
@@ -43,7 +45,7 @@ nav .dropdown button span {
 
 nav .dropdown button:hover{
   color: #fff;
-  text-decoration: underline;
+  text-decoration: none;
   border-bottom: solid 3p;
   padding-bottom: 7px;
   cursor: pointer;

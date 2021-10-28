@@ -18,10 +18,6 @@
                                 <div class="col-md-4 col-6">
                                     {!! Theme::partial('product-item-grid', compact('product')) !!}
 
-                                   
-
-
-                                    
                                 </div>
                             @endforeach
 

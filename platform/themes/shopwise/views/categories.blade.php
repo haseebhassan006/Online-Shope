@@ -1,77 +1,92 @@
-
 @php Theme::set('pageName', __()) @endphp
 <div class="section">
-
     <form action="{{ URL::current() }}" method="GET">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9">
-                    <div class="row align-items-center mb-4 pb-1">
-                        {{-- <div class="col-12">
-                            <div class="product_header">
-                                @include(Theme::getThemeNamespace() . '::views/ecommerce/includes/sort')
-                            </div>
-                        </div> --}}
-                    </div>
-                    <div class="row shop_container grid">
+       <div class="container">
+          <div class="row">
+            <div class="container">
+                <div class="row">
                     @foreach($categories as $category)
-                     @if($category->children->count() > 0)
-                    <a href="{{route('get.sub.categories',$category->id) }}">
-                        <div class="col-md-4 col-6">
-                            <div class="product">
+                    <div class="col-12 ">
+                       <div class="row">
 
-                                <div class="product_img">
+                            <h3>{{ $category->name }}</h3>
+                        </div>
+                       </div>
+                      @if($category->children->count() > 0)
+                        @foreach($category->children as $child)
+                        <a href="{{route('get.sub.categories',$child->id) }}">
+                     <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                      <div class="card">
 
-                                    <img src="{{ RvMedia::getImageUrl($category->image, 'medium', false, RvMedia::getDefaultImage()) }}" alt="{{ $category->name }}">
+                        <img class="card-img" src="{{ RvMedia::getImageUrl($child->image, 'medium', false, RvMedia::getDefaultImage()) }}" alt="{{ $category->name }}">
 
-                                </div>
+                         <div class="card-img-overlay d-flex justify-content-end">
 
-                                <div class="product_info">
-                                    <h6 class="product_title"><a href="{{route('get.sub.categories',$category->id) }}">{{ $category->name }}</a></h6>
-                                    <div class="pr_desc">
-                                        {{ $category->children }}
+                          </div>
+                           <div class="card-body">
 
-                                    </div>
-                                </div>
+                             <h4 class="card-title">
+                              <a href="{{route('get.sub.categories',$child->id) }}">
+                               {{ $child->name }}
+                             </a>
+                              </h4>
+
+                        <h6 class="card-subtitle mb-2 text-muted"></h6>
+                        <p class="card-text">
+                          {{ $child->description }}            </p>
+                          <div class="options d-flex flex-fill">
 
 
                             </div>
+                           <div class="buy d-flex justify-content-between align-items-center">
+
+
                         </div>
+                      </div>
+                      </div>
+                      </div>
                     </a>
-                    @else
-                    <a href="{{ $category->url }}">
-                        <div class="col-md-4 col-6">
-                            <div class="product">
+                      @endforeach
+                      @else
+                      <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                        <div class="card">
+                          <a href="{{ $category->url }}">
+                        <img class="card-img" src="{{ RvMedia::getImageUrl($category->image, 'medium', false, RvMedia::getDefaultImage()) }}" alt="{{ $category->name }}">
+                          </a>
+                        <div class="card-img-overlay d-flex justify-content-end">
 
-                                <div class="product_img">
-
-                                    <img src="{{ RvMedia::getImageUrl($category->image, 'medium', false, RvMedia::getDefaultImage()) }}" alt="{{ $category->name }}">
-
-
-                                </div>
-
-                                <div class="product_info">
-                                    <h6 class="product_title"><a href="{{$category->url}}">{{ $category->name }}</a></h6>
-                                    <div class="pr_desc">
-                                        {{ $category->children }}
-
-                                    </div>
-                                </div>
-
-
-                            </div>
                         </div>
-                    </a>
-                    @endif
+                        <div class="card-body">
+
+                          <h4 class="card-title">
+                              <a href="{{ $category->url }}">
+                              {{ $category->name }}
+                          </a>
+                          </h4>
+
+                          <h6 class="card-subtitle mb-2 text-muted"></h6>
+                          <p class="card-text">
+                            {{ $category->description }}            </p>
+                          <div class="options d-flex flex-fill">
 
 
-                    @endforeach
+                          </div>
+                          <div class="buy d-flex justify-content-between align-items-center">
 
 
-                    </div>
+                          </div>
+                        </div>
+                        </div>
+                        </div>
+
+
+                     @endif
+                  @endforeach
                 </div>
+              </div>
 
-            </div>
-        </div>
+
+          </div>
+       </div>
     </form>
 </div>
