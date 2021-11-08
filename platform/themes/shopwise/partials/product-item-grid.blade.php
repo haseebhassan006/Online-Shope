@@ -20,7 +20,7 @@
                     <li><a class="js-add-to-wishlist-button" href="#" data-url="{{ route('public.wishlist.add', $product->id) }}"><i class="icon-heart"></i></a></li>
                 </ul>
             </div>
-          </div>
+        </div>
         <a href="{{ $product->url }}">
           <div class="product_info">
             <h6 class="product_title"><a href="{{ $product->url }}">{{ $product->name }}</a></h6>

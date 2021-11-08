@@ -799,6 +799,11 @@ button:focus {
   -webkit-animation-fill-mode: none;
   animation-fill-mode: none;
 }
+/* new */
+.nav-fixed .top-header, 
+.nav-fixed .middle-header {
+    display: none !important;
+}
 
 .mega-menu {
   display: table;

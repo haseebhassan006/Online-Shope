@@ -54,7 +54,7 @@ nav .dropdown button:hover{
 .content-nav {
   display: none;
   position: absolute;
-  left: -377px;
+  left: -817px;
   width: 100vw;
   margin: 0;
   padding-top: 20px;
@@ -341,7 +341,7 @@ h3{
                             </a>
                         @endif
                     </div>
-                    <div class="container">
+                    <div class="container w-auto">
        <nav class="navbar navbar-expand-lg">
          <div class='dropdown'>
           <button>Product Menu<span class="fa fa-caret-right"></span></button>
@@ -355,13 +355,14 @@ h3{
 
                         @foreach ($category->children as $key=>$childCategory)
                         <div class="column">
-                         <a href="{{ route('get.sub.categories',$childCategory->id) }}">> {{ $childCategory->name }}</a>
+                         <a href="{{ route('get.sub.categories',$childCategory->id) }}"> {{ $childCategory->name }}</a>
                         </div>
                         @if ($loop->iteration % 3 == 0)
                     </div>
                     <div class="column">
 
-                @endif
+                     @endif
+                  
             @endforeach
 
                 </div>
