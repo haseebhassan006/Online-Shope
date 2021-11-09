@@ -15,32 +15,28 @@
                       @if($category->children->count() > 0)
                         @foreach($category->children as $child)
                         <a href="{{route('get.sub.categories',$child->id) }}">
-                     <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                      <div class="card">
-
+                    <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                       <div class="card">
                         <img class="card-img" src="{{ RvMedia::getImageUrl($child->image, 'medium', false, RvMedia::getDefaultImage()) }}" alt="{{ $category->name }}">
-
                          <div class="card-img-overlay d-flex justify-content-end">
-
                           </div>
                            <div class="card-body">
-
-                             <h4 class="card-title">
+                            <h4 class="card-title">
                               <a href="{{route('get.sub.categories',$child->id) }}">
                                {{ $child->name }}
-                             </a>
-                              </h4>
-
+                              </a>
+                            </h4>
                         <h6 class="card-subtitle mb-2 text-muted"></h6>
                         <p class="card-text">
-                          {{ $child->description }}            </p>
+                          {{ $child->description }}
+                        </p>
                           <div class="options d-flex flex-fill">
                           </div>
                            <div class="buy d-flex justify-content-between align-items-center">
                         </div>
                       </div>
                       </div>
-                      </div>
+                    </div>
                     </a>
                       @endforeach
                       @else
@@ -50,10 +46,8 @@
                             <div class="card-body">
                               <h5 class="card-title">{{ $category->name }}</h5>
                               <p class="card-text">{{ $category->description }}.</p>
-
                             </div>
-                          </div>
-                      
+                        </div>
                     </a>
                      @endif
                   @endforeach

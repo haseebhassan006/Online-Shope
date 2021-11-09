@@ -111,9 +111,7 @@ class ShopwiseController extends PublicController
 
 
     }
-
-
-    /**
+ /**
      * @param Request $request
      * @param BaseHttpResponse $response
      * @return BaseHttpResponse
