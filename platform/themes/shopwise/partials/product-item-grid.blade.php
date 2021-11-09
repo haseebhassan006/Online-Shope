@@ -5,7 +5,6 @@
                 <span class="pr_flash" @if ($label->color) style="background-color: {{ $label->color }}" @endif>{{ $label->name }}</span>
             @endforeach
         @endif
-
         <div class="product_img">
             <a href="{{ $product->url }}">
                 <img src="{{ RvMedia::getImageUrl($product->image, 'medium', false, RvMedia::getDefaultImage()) }}" alt="{{ $product->name }}">

@@ -44,20 +44,17 @@
                     </a>
                       @endforeach
                       @else
-                      <a href="{{ $category->url }}">
-                        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                            <div class="card">
-                                <img class="card-img" src="{{ RvMedia::getImageUrl($category->image, 'medium', false, RvMedia::getDefaultImage()) }}" alt="{{ $category->name }}">
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                    {{ $category->name }}
-                                    </h4>
-                                </div>
+                    <a href="{{ $category->url }}" >
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="{{ RvMedia::getImageUrl($category->image, 'medium', false, RvMedia::getDefaultImage()) }}" alt="{{ $category->name }}">
+                            <div class="card-body">
+                              <h5 class="card-title">{{ $category->name }}</h5>
+                              <p class="card-text">{{ $category->description }}.</p>
 
                             </div>
-
-                        </div>
-                      </a>
+                          </div>
+                      
+                    </a>
                      @endif
                   @endforeach
                 </div>

@@ -50,7 +50,7 @@ class CategoryController extends BaseController
         $categories = $this->categoryRepository->getCategories(['*'], [
             'created_at' => 'DESC',
             'is_default' => 'DESC',
-            'order'      => 'ASC',
+            'order'      => 'DESC',
         ]);
 
         $categories->load('slugable')->loadCount('posts');

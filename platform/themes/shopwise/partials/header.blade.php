@@ -351,18 +351,19 @@ h3{
             @foreach($categories as $category)
 
                     <div class="column">
-                        <h3>{{ $category->name }}</h3>
-
-                        @foreach ($category->children as $key=>$childCategory)
+                        @if($category->children->count() > 0)
+                        <h4 style="color:#f30707">{{ $category->name }}</h4>
+                        @endif
+                          @foreach ($category->children as $key=>$childCategory)
                         <div class="column">
                          <a href="{{ route('get.sub.categories',$childCategory->id) }}"> {{ $childCategory->name }}</a>
                         </div>
                         @if ($loop->iteration % 3 == 0)
                     </div>
                     <div class="column">
+                        @endif
 
-                     @endif
-                  
+
             @endforeach
 
                 </div>

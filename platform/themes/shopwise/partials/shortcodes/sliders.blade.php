@@ -1,6 +1,6 @@
 @if (count($sliders) > 0)
     <div class="banner_section slide_medium shop_banner_slider staggered-animation-wrap">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="@if (theme_option('collapsing_product_categories_on_homepage', 'no') == 'no') col-lg-12 @else col-12 @endif">
                     <div id="carouselExampleControls" class="carousel slide light_arrow" data-ride="carousel">
